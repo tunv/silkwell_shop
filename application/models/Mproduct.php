@@ -1,152 +1,38 @@
 <?php
 
-/**
- * @author Haidar Mar'ie
- * email : haidarvm@gmail.com
- */
-class MProduct extends CI_Model {
-
-    function __construct() {
-        parent::__construct();
-    }
-
-    function getAllProduct() {
-        $this->db->join('category', 'category.category_id = product.category_id');
-        $query = $this->db->get('product');
-        return checkRes($query);
-    }
-
-    function getAllProductCat($cat = NULL, $limit = NULL, $offset = FALSE) {
-        // $limit = 16;
+class MProduct extends CI_Model
+{
+    public function getAllProductCat($cat = null, $limit = null, $offset = false) {
         $limit = $limit ? $limit : $limit = 16;
         $offset = $offset ? $offset : $offset = 0;
+
         $this->db->join('product_image', 'product_image.product_id = product.product_id','left');
         $this->db->join('category', 'category.category_id = product.category_id','inner');
         $this->db->group_by('product.product_id');
-        //$not_draft = array('product_image.img_name !=' => 'draft');
-        $where = ! empty($cat) ? array('category.slug' => $cat) : array();
+        $where = ! empty($cat) ? array('category.category_id' => $cat) : array();
         $query = $this->db->get_where('product', $where, $limit, $offset);
-        //echo $this->db->last_query();
         return checkRes($query);
     }
 
-    function countAllProductCat($cat = NULL) {
+    public function countAllProductCat($cat = null) {
         $this->db->join('product_image', 'product_image.product_id = product.product_id');
         $this->db->join('category', 'category.category_id = product.category_id');
         $this->db->group_by('product.product_id');
-        $where = ! empty($cat) ? array('category.slug' => $cat) : array();
+        $where = ! empty($cat) ? array('category.category_id' => $cat) : array();
         $query = $this->db->get_where('product', $where);
-        // echo $this->db->last_query();
+
         return $query->num_rows();
     }
 
-    function getProduct($id) {
+    public function getProduct($id) {
         $this->db->join('product_image', 'product_image.product_id = product.product_id','inner');
         $query = $this->db->get_where('product', array('product.product_id' => $id));
         return checkRow($query);
     }
 
-    function getProductDraft() {
-        $this->db->order_by('product_id', "desc");
-        $this->db->limit(1);
-        $query = $this->db->get_where('product', array('name' => 'draft'));
-        //echo $this->db->last_query();
-        return checkRow($query);
-    }
-
-    /** Draft only
-     * @param unknown $product_id
-     * @return boolean
-     */
-    function getProductImgDraft($product_id) {
-        $this->db->order_by('image_id', "desc");
-        $this->db->limit(1);
-        $query = $this->db->get_where('product_image', array('product_id' => $product_id,'img_name' => 'draft'));
-        return checkRow($query);
-    }
-    
-    /** Get All Product Image from 1 id
-     *
-     * @param int $id
-     * @return boolean
-     */
-    function getAllProductImg($id) {
-        $query = $this->db->get_where('product_image', array('product_id' => $id, 'img_name !=' => 'draft'));
-        return checkRes($query);
-    }
-
-    function getLatestProductDraft($id) {
-        $query = $this->db->get_where('product', array('product_id' => $id));
-        return checkRow($query);
-    }
-
-    function getLatestProductImgDraft($id) {
-        $this->db->order_by('image_id', "desc");
-        $this->db->limit(1);
+    public function getProductImg($id) {
         $query = $this->db->get_where('product_image', array('product_id' => $id));
-        return checkRow($query);
-    }
 
-    function getProductSlug($slug) {
-        $query = $this->db->get_where('product', array('slug' => $slug));
-        return checkRow($query);
-    }
-
-    
-    /** Get Only One Default Product Image
-     * @param unknown $id
-     * @return boolean
-     */
-    function getOneProductImg($id) {
-        $this->db->limit(1);
-        $this->db->order_by('product_id', 'ASC');
-        $query = $this->db->get_where('product_image', array('product_id' => $id));
-        return checkRow($query);
-    }
-  
-
-    function checkSlug($slug) {
-        $this->db->like('slug', $slug);
-        $query = $this->db->get('product');
-        if (checkRes($query)) {
-            return $this->getLatestExistsSlug($slug);
-        } else {
-            return slugify($slug);
-        }
-    }
-
-    function getLatestExistsSlug($slug) {
-        $this->db->order_by('product_id', "desc");
-        $this->db->like('slug', $slug);
-        $this->db->limit(1);
-        $query = $this->db->get('product');
-        $slugName = checkRow($query);
-        if (strpos($slugName->slug, '-') !== false) {
-            $latestSlugPlus = substr($slugName->slug, strrpos($slugName->slug, '-') + 1) + 1;
-            $latestSlugClear = preg_replace('/[0-9]+/', '', $slugName->slug);
-            return $latestSlugClear . $latestSlugPlus;
-        } else {
-            return $slugName->slug . '-' . 1;
-        }
-    }
-    
-    function getAllSize() {
-		$query = $this->db->get('size');
-		return checkRes($query);
-	}
-
-    function getCatSlug($cat) {
-        $this->db->like('slug', $cat);
-        $this->db->limit(1);
-        $query = $this->db->get('category');
-        // echo $this->db->last_query();
-        $row = checkRow($query);
-        // print_r($row);exit();
-        return $row->category_id;
-    }
-
-    function getProductCat($prod_id, $cat_id) {
-        $query = $this->db->get_where('product', array('product_id' => $prod_id,'category_id' => $cat_id));
         return checkRes($query);
     }
 
@@ -190,8 +76,6 @@ class MProduct extends CI_Model {
     function updateProduct($data, $id) {
         unset($data['product_id']);
         unset($data['image_id']);
-//         unset($data['stock']);
-//         unset($data['qty']);
         $data['price'] = numberOnly($data['price']);
         $data['price_en'] = numberOnly($data['price_en']);
         $query = $this->db->update('product', $data, array('product_id' => $id));
@@ -224,8 +108,18 @@ class MProduct extends CI_Model {
         }
     }
 
-    function getProductSize() {
-        return array('S' => 'Small','M' => 'Medium','L' => 'Large','XL' => 'Extra Large');
-    }
 
+    public function getRelateProduct($id, $category_id)
+    {
+        $result = $this->getAllProductCat($category_id);
+        if (! empty($result)) {
+            foreach ($result as $key => $value) {
+                if ($value->product_id == $id) {
+                    unset($result[$key]);
+                }
+            }
+        }
+
+        return array_slice($result, 0, 3);
+    }
 }
