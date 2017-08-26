@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>GoGreenSouvenir | Home</title>
+<title>Silkwell Paper | Home</title>
 <link href="<?php echo base_url()?>assets/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="<?php echo base_url()?>assets/js/jquery-1.11.3.min.js"></script>
@@ -43,21 +43,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- /start menu -->
 </head>
 <body> 
-<div class="header-info">
-  <div class="container">
-    <div class="header-top-in">
-      <ul class="support">
-        <li><a href="mailto:info@example.com"><i class="glyphicon glyphicon-envelope"> </i>info@example.com</a></li>
-        <li><span><i class="glyphicon glyphicon-earphone" class="tele-in"> </i>0 462 261 61 61</span></li>          
-      </ul>
-      <ul class=" support-right">
-        <li><a href="account.html"><i class="glyphicon glyphicon-user" class="men"> </i>Login</a></li>
-        <li><a href="register.html"><i class="glyphicon glyphicon-lock" class="tele"> </i>Create an Account</a></li>            
-      </ul>
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</div>
 <?php if($this->uri->segment(1)=="home" || empty($this->uri->segment(1))) {
   $header = 'header-home';
 } else {
@@ -69,15 +54,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <div class="header-bottom">
       <div class="container">
         <div class="logo">
-          <h1><a href="index.html">Silkwell<span>Paper</span></a></h1>
+          <h1><a href="/shop/home">Silkwell<span>Paper</span></a></h1>
         </div>
         <div class="top-nav">
           <ul class="memenu skyblue">
             <li class="active">
-              <a href="index.html">Home</a>
+              <a href="/shop/home" style="font-family: arial;">Trang chủ</a>
             </li>
             <li class="grid">
-              <a href="contact.html">Contact</a>
+              <a href="contact.html" style="font-family: arial;"> Liên hệ</a>
             </li>
           </ul>
         </div>
