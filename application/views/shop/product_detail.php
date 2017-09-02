@@ -134,7 +134,7 @@ $(window).load(function() {
                     <?php foreach ($related_product as $value): ?>
                         <div class="col-md-4 chain-grid  simpleCart_shelfItem">
                             <div class="grid-span-1">
-                                <a href="single.html"><img class="img-responsive "
+                                <a href="<?= site_url() . 'product/detail/'. $value->product_id?>"><img class="img-responsive "
                                     src="<?= base_url() . $value->path ;?>" alt=" "> </a>
                             </div>
                             <div class="grid-chain-bottom ">

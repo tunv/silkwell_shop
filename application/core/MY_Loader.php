@@ -17,8 +17,12 @@ class MY_Loader extends CI_Loader {
         endif;
     }
 
+    public function shop_login($template_name, $vars = array(), $return = FALSE) {
+        $this->view('shop/shop_template/shop_header', $vars);
+        $this->view($template_name, $vars);
+    }
+
     public function admin_template($template_name, $vars = array(), $return = FALSE) {
-        checkAdminUser();
         if ($return) :
             $content = $this->view('admin/admin_template/admin_header', $vars, $return);
             $content .= $this->view('admin/admin_template/admin_sidebar', $vars, $return);

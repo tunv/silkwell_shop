@@ -17,7 +17,6 @@
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <script type="text/javascript" src="<?php echo base_url()?>assets/js/move-top.js"></script>
-<script type="text/javascript" src="<?php echo base_url()?>assets/js/easing.js"></script>
 <!--fonts-->
 <link href='//fonts.googleapis.com/css?family=Lato:100,300,400,700,900' rel='stylesheet' type='text/css'>
 <link href='//fonts.googleapis.com/css?family=Montez' rel='stylesheet' type='text/css'>
@@ -35,7 +34,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     });
 </script>   
 <script src="<?php echo base_url()?>assets/js/bootstrap.js"></script>
-<script src="<?php echo base_url()?>assets/js/simpleCart.min.js"> </script>
 <!-- start menu -->
 <link href="<?php echo base_url()?>assets/css/memenu.css" rel="stylesheet" type="text/css" media="all" />
 <script type="text/javascript" src="<?php echo base_url()?>assets/js/memenu.js"></script>
