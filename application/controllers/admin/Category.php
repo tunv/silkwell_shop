@@ -8,30 +8,28 @@ if (! defined('BASEPATH'))
  */
 class Category extends MY_Controller {
 
+    private $validation_rules = array(
+        array(
+            'field' => 'name',
+            'label' => 'Tên nhóm sản phẩm',
+            'rules' => 'required'
+        ),
+        array(
+            'field' => 'description',
+            'label' => 'Mô tả',
+            'rules' => 'required'
+        )
+    );
+
     function __construct() {
         parent::__construct();
         $this->mcategory = new MCategory();
         $this->mproduct = new MProduct();
+        $this->load->library('form_validation');
+        $this->form_validation->set_rules($this->validation_rules);
+        $this->form_validation->set_error_delimiters('<div class="error">', '</div>');
     }
 
-    /** Redirect to product_list
-     * 
-     */
-    public function index() {
-        $this->category_list();
-    }
-    
-    /** List All Product
-     *
-     * @param string Category slug
-     */
-    public function category_list() {
-        $data['title'] = "Admin Category List";
-        $data['getAll'] = $this->mcategory->getAllCategories();
-        $this->load->admin_template('admin/category_list', $data);
-        
-    }
-    
     /**
      * For Insert View
      * And execute insert
@@ -41,11 +39,14 @@ class Category extends MY_Controller {
         $data['action'] = 'insert';
         $post = $this->input->post();
         if ($post) {
-            $post['slug'] = $this->mcategory->checkSlug($post['category_name']);
-            $insertCategoryId = $this->mcategory->insertCategory($post);
-            redirect(site_url() . 'admin/category/category_list');
+            $insert_data = [
+                'category_name' => $post['name'],
+                'category_description' => $post['description'],
+            ];
+            $insertCategoryId = $this->mcategory->insertCategory($insert_data);
+            redirect(site_url() . 'admin/dashboard/category');
         }
-        $this->load->admin_template('admin/category', $data);
+        $this->load->admin_template('admin/category_insert', $data);
     }
     
     /**
@@ -58,12 +59,15 @@ class Category extends MY_Controller {
         $data['action'] = 'update';
         $post = $this->input->post();
         if ($post) {
-            print_r($post);
-            $this->mcategory->updateCategory($post, $post['category_id']);
-            redirect(site_url() . 'admin/category/category_list');
+            $data = [
+                'category_name' => $post['name'],
+                'category_description' => $post['description']
+            ];
+            $this->mcategory->updateCategory($data, $id);
+            redirect(site_url() . 'admin/dashboard/category');
         } else {
             $data['category'] = $this->mcategory->getCategory($id);
-            $this->load->admin_template('admin/category', $data);
+            $this->load->admin_template('admin/category_insert', $data);
         }
     }
     

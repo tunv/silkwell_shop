@@ -12,10 +12,8 @@ class User extends CI_Controller {
     function __construct() {
         parent::__construct();
         $this->load->model('mproduct');
-        $this->load->model('morder');
         $this->load->model('muser');
         $this->mproduct = new MProduct();
-        $this->morder = new MOrder();
         $this->muser = new MUser();
     }
 
@@ -32,9 +30,6 @@ class User extends CI_Controller {
         } else {
             $this->load->shop_template('shop/login',$data);
         }
-//         print_r($_SESSION);exit;
-//         echo $_SESSION['user_id'];
-        //$this->load->shop_template('shop/login', $data);
     }
     
     public function do_login() {
