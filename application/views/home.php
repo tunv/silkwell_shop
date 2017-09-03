@@ -3,16 +3,71 @@
     max-width: 300px;
     max-height: 240px;
   }
+  #information {
+  margin-left:20%;
+  padding-bottom: 10px;
+  }
+
+  #information a.clearfix {
+    border-bottom: 1px dotted #ddd;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    font-size: 14px !important;
+  }
+  #information a.clearfix:hover dt {
+    color: #111 !important;
+  }
+  #information a.clearfix dt {
+    float: left;
+    margin-right: 20px;
+    width: 90px;
+  }
+  #information a.clearfix dd {
+    font-weight: bold;
+    width: 685px;
+    float: left;
+  }
+  #information a.clearfix:last-of-type {
+    border: 0;
+  }
+  .thongbao {
+    width: 60px;
+    height: 60px;
+  }
+  hr.example1 {
+  width: 70%;
+  margin-left: 2px;
+  background-color: #42f4a4;
+  border: 1px #41f4eb solid;
+  color: #ffdfe2;
+  }
 </style>
 <div class="sap_tabs">
+    <?php if (! empty($news_list)): ?>
+      <section id="information" class="clearfix">
+        <h3 style="color: #42a4f4;"><img class="thongbao" src="<?= img_url() . 'thongbao.jpeg' ?>">THÔNG BÁO</h3>
+        <?php foreach ($news_list as $news): ?>
+          <a href="/news#<?=$news->id; ?>" class="clearfix">
+            <dl>
+              <dt>
+                <?= date('Y.m.d', strtotime($news->da_update)); ?>
+              </dt>
+              <dd>
+                <?= $news->title; ?>
+              </dd>
+            </dl>
+          </a>
+        <?php endforeach; ?>
+        <hr class="example1">
+      </section>
+    <?php endif; ?>
   <div class="container">
-    <label class="line"> </label>
     <h2>Sản phẩm được yêu thích</h2>
     <div id="horizontalTab" style="display: block; width: 100%; margin: 0px;">
       <ul class="resp-tabs-list">
-        <li class="resp-tab-item" aria-controls="tab_item-0" role="tab"><span style="font-family: arial;">Khăn giấy khô</span></li>
-        <li class="resp-tab-item" aria-controls="tab_item-1" role="tab"><span style="font-family: arial;">Giấy lau tay</span></li>
-        <li class="resp-tab-item" aria-controls="tab_item-2" role="tab"><span style="font-family: arial;">Giấy cuộn lớn</span></li>
+          <li class="resp-tab-item" aria-controls="tab_item-0" role="tab"><span style="font-family: arial;">Khăn giấy khô</span></li>
+          <li class="resp-tab-item" aria-controls="tab_item-1" role="tab"><span style="font-family: arial;">Giấy lau tay</span></li>
+          <li class="resp-tab-item" aria-controls="tab_item-2" role="tab"><span style="font-family: arial;">Giấy cuộn lớn</span></li>
         <div class="clearfix"></div>
       </ul>
       <div class="resp-tabs-container">
