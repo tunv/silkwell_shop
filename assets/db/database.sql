@@ -111,6 +111,15 @@ INSERT INTO `jk_user` (`user_id`, `username`, `password`) VALUES
 -- Indexes for dumped tables
 --
 
+
+CREATE TABLE `jk_news` (
+  `id` int(11) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `content` varchar(255) DEFAULT NULL,
+  `da_create` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `da_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 --
 -- Indexes for table `jk_category`
 --

@@ -21,6 +21,20 @@ function checkRow($query) {
     }
 }
 
+if ( ! function_exists('my_model')) {
+    function my_model($name)
+    {
+        $CI =& get_instance();
+        $CI->load->model($name);
+        $model = new $name;
+        return $model;
+    }
+}
+
+function get_sale_product() {
+    return my_model('mproduct')->getFooterProduct();
+}
+
 /**
  * Count Row
  *

@@ -12,9 +12,10 @@
         </div>
         <div class="col-md-4 footer-middle">
             <h3 style="font-family:arial;">Sản phẩm được đánh giá</h3>
-                <div class="product-go">
+                <?php if (! empty($category_1)): ?>
+                    <div class="product-go">
                         <div class="grid-product">
-                            <h6><a href="<?php echo site_url().'product/detail/1' ?>" style="font-family:arial;" >Khăn giấy rút 2 lớp</a></h6>
+                            <h6><a href="<?php echo site_url().'product/detail/' . $category_1[0]->product_id ?>" style="font-family:arial;" ><?= $category_1[0]->name ?></a></h6>
                             <div class="rating">
                                 <span>☆</span>
                                 <span>☆</span>
@@ -22,17 +23,19 @@
                                 <span>☆</span>
                                 <span>☆</span>
                             </div>
-                            <span class=" price-in">18,900đ</span>
+                            <span class=" price-in"><?= number_format($category_1[0]->price) . 'đ' ?></span>
                         </div>
                             <div class="fashion">
-                                <a href="#"><img class="img-responsive " src="<?php echo img_url();?>sanpham1_0.jpg" alt="">
+                                <a href="#"><img class="img-responsive " src="<?= site_url() . $category_1[0]->path ?>" alt="">
                                 <p>NEW</p></a>
                             </div>
                         <div class="clearfix"> </div>
-                        </div>
-                            <div class="product-go">
+                    </div>
+                    <?php endif; ?>
+                    <?php if (! empty($category_2)): ?>
+                    <div class="product-go">
                         <div class="grid-product">
-                            <h6><a href="<?php echo site_url().'product/detail/2' ?>" >Khăn lau mặt 2 lớp Posy</a></h6>
+                            <h6><a href="<?php echo site_url().'product/detail/' . $category_2[0]->product_id ?>" style="font-family:arial;" ><?= $category_2[0]->name ?></a></h6>
                             <div class="rating">
                                 <span>☆</span>
                                 <span>☆</span>
@@ -40,17 +43,19 @@
                                 <span>☆</span>
                                 <span>☆</span>
                             </div>
-                            <span class=" price-in">16.200đ</span>
+                            <span class=" price-in"><?= number_format($category_2[0]->price) . 'đ' ?></span>
                         </div>
                             <div class="fashion">
-                                <a href="#"><img class="img-responsive " src="<?php echo img_url();?>sanpham2_0.jpg" alt="">
-                                <p class="new1">NEW</p></a>
+                                <a href="#"><img class="img-responsive " src="<?= site_url() . $category_2[0]->path ?>" alt="">
+                                <p>NEW</p></a>
                             </div>
                         <div class="clearfix"> </div>
-                        </div>
-                            <div class="product-go">
+                    </div>
+                    <?php endif; ?>
+                    <?php if (! empty($category_3)): ?>
+                    <div class="product-go">
                         <div class="grid-product">
-                            <h6><a href="#" >Giấy lụa hộp 2 lớp Pulppy</a></h6>
+                            <h6><a href="<?php echo site_url().'product/detail/' . $category_3[0]->product_id ?>" style="font-family:arial;" ><?= $category_3[0]->name ?></a></h6>
                             <div class="rating">
                                 <span>☆</span>
                                 <span>☆</span>
@@ -58,14 +63,15 @@
                                 <span>☆</span>
                                 <span>☆</span>
                             </div>
-                            <span class=" price-in">17.000đ</span>
+                            <span class=" price-in"><?= number_format($category_3[0]->price) . 'đ' ?></span>
                         </div>
                             <div class="fashion">
-                                <a href="#"><img class="img-responsive " src="<?php echo img_url();?>sanpham3_0.jpg" alt="">
-                                <p class="new1">NEW</p></a>
+                                <a href="#"><img class="img-responsive " src="<?= site_url() . $category_3[0]->path ?>" alt="">
+                                <p>NEW</p></a>
                             </div>
                         <div class="clearfix"> </div>
-                        </div>
+                    </div>
+                    <?php endif; ?>
 
         </div>
         <div class="col-md-4 footer-bottom">

@@ -28,59 +28,29 @@
                 <div class="of-left-in">
                     <h3 class="best" style="font-family:arial;">Sản phẩm bán chạy</h3>
                 </div>
-                <div class="product-go">
-                    <div class=" fashion-grid">
-                        <a href="<?= site_url() . 'product/detail/1'?>">
-                        <img class="img-responsive" src="<?php echo img_url();?>sanpham1_0.jpg" alt="">
-                        </a>
-                    </div>
-                    <div class=" fashion-grid1">
-                        <h6 class="best2">
-                            <a href="<?= site_url() . 'product/detail/1'?>">Khăn giấy rút 2 lớp Silkwell</a>
-                        </h6>
+                <?php $product_sales = get_sale_product(); ?>
+                <?php if (! empty($product_sales)): ?>
+                    <?php foreach ($product_sales as $value): ?>
+                        <?php if (! empty($value)): ?>
+                            <div class="product-go">
+                                <div class=" fashion-grid">
+                                    <a href="<?= site_url() . 'product/detail/' . $value[0]->product_id ?>">
+                                    <img class="img-responsive" src="<?= site_url() . $value[0]->path?>" alt="">
+                                    </a>
+                                </div>
+                                <div class=" fashion-grid1">
+                                    <h6 class="best2">
+                                        <a href="<?= site_url() . 'product/detail/' . $value[0]->product_id?>"><?= $value[0]->name; ?></a>
+                                    </h6>
 
-                        <span class=" price-in1">18,900đ</span>
-                    </div>
+                                    <span class=" price-in1"><?= number_format($value[0]->price) . 'đ' ?></span>
+                                </div>
 
-                    <div class="clearfix"></div>
-                </div>
-                <div class="product-go">
-                    <div class=" fashion-grid">
-                        <a href="<?= site_url() . 'product/detail/3'?>"><img class="img-responsive "
-                            src="<?php echo img_url();?>sanpham3_0.jpg" alt=""></a>
-                    </div>
-                    <div class="fashion-grid1">
-                        <h6 class="best2">
-                            <a href="<?= site_url() . 'product/detail/3'?>">Giấy lụa hộp 2 lớp Pulppy </a>
-                        </h6>
-
-                        <span class=" price-in1"> 17,000đ</span>
-                    </div>
-
-                    <div class="clearfix"></div>
-                </div>
-                <div class="product-go">
-                    <div class=" fashion-grid">
-                        <a href="<?= site_url() . 'product/detail/3'?>"><img class="img-responsive "
-                            src="<?php echo img_url();?>sanpham4_0.jpg" alt=""></a>
-
-                    </div>
-                    <div class=" fashion-grid1">
-                        <h6 class="best2">
-                            <a href="#">Khăn giấy lụa 2 lớp Teddy Bear</a>
-                        </h6>
-                        <ul class="star-footer">
-                            <li><a href="#"><i> </i></a></li>
-                            <li><a href="#"><i> </i></a></li>
-                            <li><a href="#"><i> </i></a></li>
-                            <li><a href="#"><i> </i></a></li>
-                            <li><a href="#"><i> </i></a></li>
-                        </ul>
-                        <span class=" price-in1"><small>20,000đ</small> → 18,800đ</span>
-                    </div>
-
-                    <div class="clearfix"></div>
-                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
+                <?php endif; ?>
             </div>
         </div>
         <!---->
