@@ -70,5 +70,11 @@ class Category extends MY_Controller {
             $this->load->admin_template('admin/category_insert', $data);
         }
     }
-    
+
+    public function delete($id = NULL)
+    {
+        $this->mcategory->delete_category($id);
+
+        redirect('admin/dashboard/category');
+    }
 }

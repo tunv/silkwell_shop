@@ -100,6 +100,7 @@
   </div>
 </div>
   <!--start-shoes--> 
+<?php if (! empty($products)): ?>
 <div class="goggles"> 
   <div class="container"> 
       <h2>Danh sách sản phẩm</h2>
@@ -125,3 +126,4 @@
       <div class="clearfix"> </div>
   </div>
 </div>
+<?php endif; ?>

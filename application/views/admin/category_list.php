@@ -55,7 +55,7 @@
                           </a>
                         </td>
                         <td>
-                          <a href="<?php echo base_url()?>admin/category/delete/<?=$category->category_id?>" class="btn btn-danger " onclick="return confirm('Apakah Anda yakin ingin menghapus?')"> <i class="fa fa-trash-o" > </i>
+                          <a href="<?php echo base_url()?>admin/category/delete/<?=$category->category_id?>" class="btn btn-danger " onclick="return confirm('Bạn thật sự muốn xoá nhóm sản phẩm này?')"> <i class="fa fa-trash-o" > </i>
                               Xoá <i class="fa fa-arrow-circle-right"></i>
                           </a>
                         </td>

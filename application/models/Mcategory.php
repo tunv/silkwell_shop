@@ -55,4 +55,12 @@ class MCategory extends CI_Model {
 	    return $query;
 	}
 
+    public function delete_category($id)
+    {
+        if (empty($id)) {
+            return;
+        }
+
+        $this->db->delete('category', ['category_id' => $id]);
+    }
 }
