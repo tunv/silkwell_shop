@@ -10,13 +10,13 @@
                     <form role="form" action="<?= site_url() . 'admin/login/do_login' ?>" method="post" id="login-form" autocomplete="off">
                         <div class="form-group">
                             <label for="user_name" class="sr-only">Tên đăng nhập</label>
-                            <input type="text" name="user_name" id="user_name" class="form-control" placeholder="somebody@example.com">
+                            <input type="text" name="user_name" id="user_name" class="form-control" placeholder="Tên đăng nhập">
                         </div>
                         <div class="form-group">
                             <label for="password" class="sr-only">Mật khẩu</label>
-                            <input type="password" name="password" id="password" class="form-control" placeholder="Password">
+                            <input type="password" name="password" id="password" class="form-control" placeholder="Mật khẩu">
                         </div>
-                        <input type="submit" id="btn-login" class="btn btn-custom btn-lg btn-block" value="Log in">
+                        <input type="submit" id="btn-login" class="btn btn-custom btn-lg btn-block" value="Đăng nhập">
                     </form>
               </div>
         </div> <!-- /.col-xs-12 -->

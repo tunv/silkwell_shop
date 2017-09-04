@@ -31,11 +31,9 @@ CREATE TABLE `jk_category` (
 --
 
 INSERT INTO `jk_category` (`category_id`, `category_name`, `category_description`) VALUES
-(1, 'giay_kho', 'テスト'),
+(1, 'giay_kho', NULL),
 (2, 'giay_lau_tay', NULL),
 (3, 'giay_cuon', NULL),
-(4, ' Nhóm sản phẩm 3', 'Giấy'),
-(5, 'test', '123456');
 
 -- --------------------------------------------------------
 
@@ -66,14 +64,6 @@ CREATE TABLE `jk_product_image` (
   `create_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `path` varchar(500) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- テーブルのデータのダンプ `jk_product_image`
---
-
-INSERT INTO `jk_product_image` (`image_id`, `product_id`, `img_name`, `create_date`, `path`) VALUES
-(9, 7, 'IMG_20140216_115729.jpg', '2015-12-06 05:20:34', 'assets/img/sp1.jpg'),
-(10, 8, 'IMG_20140216_115729.jpg', '2015-12-06 05:20:34', 'assets/img/sp1.jpg');
 
 -- --------------------------------------------------------
 

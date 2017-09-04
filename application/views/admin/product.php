@@ -62,17 +62,6 @@
     <textarea name="description" class="textarea" placeholder="Nhập mô tả" style="width: 100%; height: 125px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"><?php echo isset($product) ? $product->description : set_value('description');?></textarea>
     </div>
   </div>
-  <?php 
-    if(!empty($getAllProductImg) && $action=='update') {
-    foreach($getAllProductImg as $proudctImg) {?>
-    <div class="form-group">
-    <label class="col-sm-2 control-label" for="name">Image</label>
-    <div class="col-sm-10">
-      <?php echo !empty($proudctImg->path) ?  '<img src="'.prod_thumb_url().$proudctImg->image_id.$proudctImg->ext.'" />' : "No Image" ?>
-    </div>
-    </div>
-    <?php }
-  }?>
   <div class="form-group">
     <label class="col-sm-2 control-label" for="image">Hình ảnh</label>
     <div class="col-sm-10">
