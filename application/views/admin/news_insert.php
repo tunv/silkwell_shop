@@ -6,14 +6,14 @@
 <div class="content-wrapper">
   <section class="content-header">
     <h1>
-      Thêm nhóm sản phẩm
+      Thêm thông báo mới
     </h1>
   </section>
   <section class="content">
   <div class="box box-info" id="quick-product-box">
   <div class="box-header">
     <i class="fa fa-envelope"></i>
-    <h3 class="box-title">Thêm nhóm sản phẩm mới</h3>
+    <h3 class="box-title">Thêm thông báo mới</h3>
     <div class="pull-right box-tools">
       <button class="btn btn-info btn-sm" data-toggle="tooltip" title="Add More">
         <i class="fa fa-plus"></i>
@@ -24,20 +24,20 @@
     <?php if($action === 'insert') {?>
       <form action="insert" class="form-horizontal" id="quick-product" method="post" enctype = "multipart/form-data">
     <?php } else {?>
-      <form action="<?php echo site_url();?>admin/category/update/<?php echo !empty($category) ? $category->category_id : "";?>" class="form-horizontal"  method="post">
+      <form action="<?php echo site_url();?>admin/news/update/<?php echo !empty($news) ? $news->id : "";?>" class="form-horizontal"  method="post">
     <?php  } ?>
     <div class="form-group">
-      <label class="col-sm-2 control-label" for="name">Tên nhóm sản phẩm</label>
+      <label class="col-sm-2 control-label" for="title">Tiêu đề</label>
       <div class="col-sm-10">
-        <?php echo form_error('name'); ?>
-        <input id="name" name="name" class="form-control" value="<?php echo isset($category) ? $category->category_name : set_value('name');?>" type="text" placeholder="Tên sản phẩm">
+        <?php echo form_error('title'); ?>
+        <input id="title" name="title" class="form-control" value="<?php echo isset($news) ? $news->title : set_value('title');?>" type="text" placeholder="Tiêu đề">
       </div>
     </div>
   <div class="form-group">
-    <label class="col-sm-2 control-label" for="name">Mô tả</label>
+    <label class="col-sm-2 control-label" for="name">Nội dung</label>
     <div class="col-sm-10">
-    <?php echo form_error('description'); ?>
-    <textarea name="description" class="textarea" placeholder="Nhập mô tả" style="width: 100%; height: 125px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"><?php echo isset($category) ? $category->category_description : set_value('description');?></textarea>
+    <?php echo form_error('content'); ?>
+    <textarea name="content" class="textarea" placeholder="Nhập nội dung" style="width: 100%; height: 125px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"><?php echo isset($news) ? $news->content : set_value('content');?></textarea>
     </div>
   </div>
   <div class="box-footer clearfix">

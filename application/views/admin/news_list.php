@@ -14,8 +14,8 @@
     </h1>
     <ol class="breadcrumb">
       <li><a href="<?php echo site_url()?>admin/dashboard/"><i class="fa fa-dashboard"></i>Quản lý sản phẩm</a></li>
-      <li class="active"> <a href="#">Quản lý nhóm sản phẩm (loại sản phẩm)</a></li>
-      <li> <a href="<?php echo site_url()?>admin/dashboard/news">Quản lý thông báo trên web</a></li>
+      <li> <a href="<?php echo site_url()?>admin/dashboard/category">Quản lý nhóm sản phẩm (loại sản phẩm)</a></li>
+      <li class="active"> <a href="#">Quản lý thông báo trên web</a></li>
     </ol>
   </section>
 
@@ -23,10 +23,10 @@
     <div class="box box-info" id="quick-product-box">
       <div class="box-header">
           <i class="fa fa-envelope"></i>
-          <h3 class="box-title">Danh sách nhóm sản phẩm</h3>
+          <h3 class="box-title">Danh sách thông báo</h3>
           <!-- tools box -->
           <div class="pull-right box-tools">
-              <a href="<?php echo site_url()?>admin/category/insert" class="btn btn-info btn-sm" ><i class="fa fa-plus"></i> Thêm nhóm sản phẩm mới</a>
+              <a href="<?php echo site_url()?>admin/news/insert" class="btn btn-info btn-sm" ><i class="fa fa-plus"></i> Thêm thông báo mới</a>
           </div>
           <br>
           <!-- /. tools -->
@@ -36,27 +36,31 @@
           <thead>
             <tr>
                 <th> STT </th>
-                <th> Tên nhóm sản phẩm phẩm </th>
-                <th> Mô tả </th>
+                <th> Tiêu đề </th>
+                <th> Nội dung </th>
+                <th> Ngày tạo thông báo </th>
+                <th> Ngày sửa thông báo </th>
                 <th></th>
                 <th></th>
             </tr>
           </thead>
-          <?php if (! empty($categories)): ?>
+          <?php if (! empty($news_list)): ?>
               <?php $i = 1; ?>
               <tbody>
-                  <?php foreach ($categories as $category): ?>
+                  <?php foreach ($news_list as $item): ?>
                       <tr>
                         <td><?php echo $i++;?></td>
-                        <td><?php echo $category->category_name ?></td>
-                        <td><?php echo $category->category_description ?></td>
+                        <td><?= $item->title ?></td>
+                        <td><?= $item->content ?></td>
+                        <td><?= $item->da_create ?></td>
+                        <td><?= $item->da_update ?></td>
                         <td>
-                          <a href="<?php echo base_url()?>admin/category/update/<?=$category->category_id?>" class="btn btn-info "> <i class="fa fa-edit"> </i>
+                          <a href="<?php echo base_url()?>admin/news/update/<?=$item->id?>" class="btn btn-info "> <i class="fa fa-edit"> </i>
                               Sửa <i class="fa fa-arrow-circle-right"></i>
                           </a>
                         </td>
                         <td>
-                          <a href="<?php echo base_url()?>admin/category/delete/<?=$category->category_id?>" class="btn btn-danger " onclick="return confirm('Bạn thật sự muốn xoá nhóm sản phẩm này?')"> <i class="fa fa-trash-o" > </i>
+                          <a href="<?php echo base_url()?>admin/news/delete/<?=$item->id?>" class="btn btn-danger " onclick="return confirm('Bạn thật sự muốn xoá tin tức này?')"> <i class="fa fa-trash-o" > </i>
                               Xoá <i class="fa fa-arrow-circle-right"></i>
                           </a>
                         </td>
