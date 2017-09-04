@@ -13,8 +13,9 @@
       Màn hình quản lý
     </h1>
     <ol class="breadcrumb">
-      <li><a href="#"><i class="fa fa-dashboard"></i>Quản lý sản phẩm</a></li>
-      <li class="active"> <a href="<?= site_url() . 'admin/dashboard/category' ?>">Quản lý category (loại sản phẩm)</a></li>
+      <li class="active"><a href="#"><i class="fa fa-dashboard"></i>Quản lý sản phẩm</a></li>
+      <li> <a href="<?= site_url() . 'admin/dashboard/category' ?>">Quản lý category (loại sản phẩm)</a></li>
+      <li> <a href="<?php echo site_url()?>admin/dashboard/news">Quản lý thông báo trên web</a></li>
     </ol>
   </section>
 

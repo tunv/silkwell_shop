@@ -98,7 +98,7 @@
     <button class="pull-right btn btn-default" id="<?php echo $action;?>-product">
       Gửi <i class="fa fa-arrow-circle-right"></i>
     <?php } else { ?>
-      <input class="pull-right btn btn-default"  value="Submit" type="submit">
+      <input class="pull-right btn btn-default"  value="Gửi" type="submit">
     <?php } ?>
     </button>
     </form>

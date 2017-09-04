@@ -6,6 +6,11 @@ class MNews extends CI_Model {
         return checkRes($query);
     }
 
+    public function getNew($id) {
+        $query = $this->db->get_where('news', array('id' => $id));
+        return checkRow($query);
+    }
+
     function insertNew($data) {
         unset($data['id']);
         $query = $this->db->insert('news', $data);

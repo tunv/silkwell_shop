@@ -9,6 +9,8 @@ class Dashboard extends MY_Controller {
         $this->load->helper('cookie');
         $this->mproduct = new MProduct();
         $this->mcategory = new MCategory();
+        $this->load->model('mnews');
+        $this->mnews = new MNews();
     }
 
     public function index() {
@@ -27,5 +29,12 @@ class Dashboard extends MY_Controller {
         $data['title'] = "Dashboard Admin";
         $data['categories'] = $this->mcategory->getAllCategories();
         $this->load->admin_template('admin/category_list', $data);
+    }
+
+    public function news()
+    {
+        $data['news_list'] = $this->mnews->getAllNews();
+
+        $this->load->admin_template('admin/news_list', $data);
     }
 }
