@@ -49,50 +49,6 @@ function countRow($query) {
     }
 }
 
-/**
- * Only Number Allow
- *
- * @param unknown $num          
- * @return mixed
- */
-function numberOnly($num) {
-    return preg_replace('/\D/', '', $num);
-}
-
-function checkAdminUser() {
-    // echo $_SESSION['level_id'];
-    if (isset($_SESSION['level_id'])) {
-        if ($_SESSION['level_id'] == 1) {
-            return true;
-        } else {
-            redirect('home');
-        }
-    } else {
-        redirect('home');
-    }
-}
-
-/**
- * User Login insert Session
- *
- * @param unknown $username         
- * @param unknown $user_id          
- * @param unknown $full_name            
- * @param unknown $level            
- * @param unknown $company_id           
- * @param unknown $company_name         
- */
-function define_sess($username, $user_id, $full_name, $email, $level_id) {
-    // $_SESSION['jk_username'] = $username;
-    // $_SESSION['jk_user_id'] = $user_id;
-    // $_SESSION['jk_full_name'] = $full_name;
-    // $_SESSION['jk_level'] = $level;
-    $ci = & get_instance();
-    $newdata = array( 'username' => $username, 'user_id' => $user_id, 'full_name' => $full_name, 'email' => $email, 'level_id' => $level_id, 'last_url' => $_SERVER['HTTP_REFERER'], 'logged_in' => TRUE );
-    $ci->session->set_userdata($newdata);
-    // echo USERNAME;exit;
-    // print_r($_SESSION);exit;
-}
 
 /**
  * For Back to previous URL
@@ -124,63 +80,12 @@ function uploader($log) {
 }
 
 /**
- * Generate Slug
- *
- * @param string $text          
- * @return string|mixed
- */
-function slugify($text) {
-    // replace non letter or digits by -
-    $text = preg_replace('~[^\\pL\d]+~u', '-', $text);
-    // trim
-    $text = trim($text, '-');
-    // transliterate
-    $text = iconv('utf-8', 'us-ascii//TRANSLIT', $text);
-    // lowercase
-    $text = strtolower($text);
-    // remove unwanted characters
-    $text = preg_replace('~[^-\w]+~', '', $text);
-    if (empty($text)) {
-        return 'n-a';
-    }
-    return $text;
-}
-
-/**
- * Get First Digit
- *
- * @param unknown $char         
- * @return string
- */
-function get3Digit($char) {
-    return substr($char, 0, 3);
-}
-
-/**
  * Image Url
  *
  * @return string
  */
 function img_url() {
     return base_url() . 'assets/img/';
-}
-
-/**
- * Product Thumbnail Url
- *
- * @return string
- */
-function prod_thumb_url() {
-    return base_url() . 'assets/product/thumb/';
-}
-
-/**
- * Product Original Url
- *
- * @return string
- */
-function prod_ori_url() {
-    return base_url() . 'assets/product/ori/';
 }
 
 /**
